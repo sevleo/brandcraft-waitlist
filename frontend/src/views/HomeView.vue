@@ -16,13 +16,15 @@ const success = ref(false)
 const loadingEmailCount = ref(false)
 
 onMounted(async () => {
-  loadingEmailCount.value = true
-
-  const endpoint = `${import.meta.env.VITE_BACKEND_URL}/emails-count`
-  const response = await axios.get(endpoint)
-  emailsCount.value = response.data.emailCount
-
-  loadingEmailCount.value = false
+  try {
+    const endpoint = `${import.meta.env.VITE_BACKEND_URL}/emails-count`
+    const response = await axios.get(endpoint)
+    emailsCount.value = response.data.emailCount
+  } catch (e) {
+    console.error('Failed to load email count', e)
+  } finally {
+    loadingEmailCount.value = false
+  }
 })
 
 const handleSubmit = async () => {
@@ -120,8 +122,12 @@ const handleButtonClick = () => {
 
       <!-- Social Proof -->
       <p class="text-sm">
-        <strong>{{ !loadingEmailCount ? emailsCount : '0' }} brand builders</strong> have already
-        joined!
+        <strong
+          ><span v-if="emailsCount !== undefined"
+            >{{ !loadingEmailCount ? emailsCount : '0' }} </span
+          ><span v-else>0 brand builders</span></strong
+        >
+        have already joined!
       </p>
 
       <!-- Features Section -->
