@@ -3,7 +3,7 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'frontend-silent-darkness-7145'
+app = 'brandcraft'
 primary_region = 'sin'
 
 [build]
