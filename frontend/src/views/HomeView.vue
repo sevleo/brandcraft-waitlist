@@ -7,7 +7,7 @@ import axios from 'axios'
 
 const router = useRouter()
 
-const emailsCount = ref(null)
+const emailsCount = ref(0)
 const email = ref('')
 const error = ref('')
 const loading = ref(false)
@@ -120,7 +120,7 @@ const handleButtonClick = () => {
 
       <!-- Social Proof -->
       <p class="text-sm">
-        <strong>{{ loadingEmailCount ? emailsCount : '0' }} brand builders</strong> have already
+        <strong>{{ !loadingEmailCount ? emailsCount : '0' }} brand builders</strong> have already
         joined!
       </p>
 
