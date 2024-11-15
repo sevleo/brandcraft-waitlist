@@ -17,7 +17,7 @@ primary_region = 'sin'
   processes = ['app']
 
 [env]
-  VITE_BACKEND_URL = "https://backend-dry-sea-3601.fly.dev"
+  VITE_BACKEND_URL = "https://brandcraft-waitlist-backend.fly.dev"
 
 [[vm]]
   memory = '1gb'
