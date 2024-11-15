@@ -14,14 +14,13 @@ const loading = ref(false)
 const success = ref(false)
 
 onMounted(async () => {
-  try {
-    const endpoint = `${import.meta.env.VITE_BACKEND_URL}/emails-count`
-    const response = await axios.get(endpoint)
-    emailsCount.value = response.data.emailCount
-  } catch (e) {
-    console.error('Failed to load email count', e)
-  } finally {
-  }
+  // try {
+  //   const endpoint = `${import.meta.env.VITE_BACKEND_URL}/emails-count`
+  //   const response = await axios.get(endpoint)
+  //   emailsCount.value = response.data.emailCount
+  // } catch (e) {
+  //   console.error('Failed to load email count', e)
+  // }
 })
 
 const handleSubmit = async () => {
