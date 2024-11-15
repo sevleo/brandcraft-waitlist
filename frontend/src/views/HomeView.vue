@@ -119,10 +119,9 @@ const handleButtonClick = () => {
 
       <!-- Social Proof -->
       <p class="text-sm">
-        <strong
-          ><span v-if="emailsCount !== undefined">{{ emailsCount }} </span
-          ><span v-else>0</span> brand builders</strong
-        >
+        <strong>
+          <span>{{ emailsCount !== undefined ? emailsCount : 0 }}</span> brand builders
+        </strong>
         have already joined!
       </p>
 
