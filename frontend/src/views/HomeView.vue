@@ -13,11 +13,16 @@ const error = ref('')
 const loading = ref(false)
 const success = ref(false)
 
-onMounted(async () => {
-  const endpoint = `${import.meta.env.VITE_BACKEND_URL}/emails-count`
+const loadingEmailCount = ref(false)
 
+onMounted(async () => {
+  loadingEmailCount.value = true
+
+  const endpoint = `${import.meta.env.VITE_BACKEND_URL}/emails-count`
   const response = await axios.get(endpoint)
   emailsCount.value = response.data.emailCount
+
+  loadingEmailCount.value = false
 })
 
 const handleSubmit = async () => {
@@ -115,7 +120,8 @@ const handleButtonClick = () => {
 
       <!-- Social Proof -->
       <p class="text-sm">
-        <strong>{{ emailsCount }} brand builders</strong> have already joined!
+        <strong>{{ loadingEmailCount ? emailsCount : '0' }} brand builders</strong> have already
+        joined!
       </p>
 
       <!-- Features Section -->
