@@ -13,8 +13,6 @@ const error = ref('')
 const loading = ref(false)
 const success = ref(false)
 
-const loadingEmailCount = ref(false)
-
 onMounted(async () => {
   try {
     const endpoint = `${import.meta.env.VITE_BACKEND_URL}/emails-count`
@@ -23,7 +21,6 @@ onMounted(async () => {
   } catch (e) {
     console.error('Failed to load email count', e)
   } finally {
-    loadingEmailCount.value = false
   }
 })
 
@@ -123,9 +120,8 @@ const handleButtonClick = () => {
       <!-- Social Proof -->
       <p class="text-sm">
         <strong
-          ><span v-if="emailsCount !== undefined"
-            >{{ !loadingEmailCount ? emailsCount : '0' }} </span
-          ><span v-else>0 brand builders</span></strong
+          ><span v-if="emailsCount !== undefined">{{ emailsCount }} </span
+          ><span v-else>0</span> brand builders</strong
         >
         have already joined!
       </p>
