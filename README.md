@@ -1,3 +1,5 @@
 This is a waitlist for Brandcraft.art
 
 Feel free to re-use it to launch your own waitlist for your product :)
+
+It includes Vue front-end, NodeJs backend, integration with a MongoDB, with a simple email storage and management system.
