@@ -1,0 +1,95 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Frontend build output
+/frontend/dist/
+/frontend/node_modules/
+/frontend/.env
+
+# Backend build output
+/backend/node_modules/
+/backend/.env
+
+# Docker
+docker-compose.override.yml
+.docker
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+.vscode/
+.idea/
+
+.env
+
+
+
+# Frontend
+# Logs
+/frontend/logs
+/frontend/*.log
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+/frontend/pnpm-debug.log*
+/frontend/lerna-debug.log*
+
+/frontend/node_modules
+/frontend/.DS_Store
+/frontend/dist
+/frontend/dist-ssr
+/frontend/coverage
+/frontend/*.local
+
+/frontend/cypress/videos/
+/frontend/cypress/screenshots/
+
+# Editor directories and files
+/frontend/.vscode/*
+/frontend/!.vscode/extensions.json
+/frontend/.idea
+/frontend/*.suo
+/frontend/*.ntvs*
+/frontend/*.njsproj
+/frontend/*.sln
+/frontend/*.sw?
+
+/frontend/*.tsbuildinfo
+/frontend/notes.txt
+
+
+# Backend
+# Logs
+/backend/logs
+/backend/*.log
+/backend/npm-debug.log*
+/backend/yarn-debug.log*
+/backend/yarn-error.log*
+/backend/pnpm-debug.log*
+/backend/lerna-debug.log*
+
+/backend/node_modules
+/backend/.DS_Store
+/backend/dist
+/backend/dist-ssr
+/backend/coverage
+/backend/*.local
+
+/backend/cypress/videos/
+/backend/cypress/screenshots/
+
+# Editor directories and files
+/backend/.vscode/*
+/backend/!.vscode/extensions.json
+/backend/.idea
+/backend/*.suo
+/backend/*.ntvs*
+/backend/*.njsproj
+/backend/*.sln
+/backend/*.sw?
+
+/backend/*.tsbuildinfo

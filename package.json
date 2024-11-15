@@ -1,0 +1,7 @@
+{
+  "name": "voice-to-text",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "docker-compose up --build"
+  }
+}

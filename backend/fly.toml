@@ -1,0 +1,26 @@
+# fly.toml app configuration file generated for backend-dry-sea-3601 on 2024-09-13T00:53:55+07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'backend-dry-sea-3601'
+primary_region = 'sin'
+
+[build]
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 2
+  processes = ['app']
+
+[env]
+  BACKEND_URL = "https://backend-dry-sea-3601.fly.dev"
+  FRONTEND_URL = "https://eloqra.com"
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
