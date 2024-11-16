@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { RouterView } from "vue-router";
+import Toast from 'primevue/toast'
+
 </script>
 
 <template>
@@ -9,7 +11,19 @@ import { RouterView } from 'vue-router'
   </transition>
 </template>
 
-<style>
+<style scoped>
+/* Navigation styles */
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  display: inline;
+  margin-right: 1em;
+}
+
+/* Transition styles */
 .fade-enter-from {
   opacity: 0;
 }
@@ -25,24 +39,20 @@ import { RouterView } from 'vue-router'
 
 @keyframes movingIn {
   0% {
-    /* transform: translateY(-30px); */
     opacity: 0;
   }
 
   100% {
-    /* transform: translateY(0px); */
     opacity: 1;
   }
 }
 
 @keyframes movingOut {
   0% {
-    /* transform: translateY(0px); */
     opacity: 1;
   }
 
   100% {
-    /* transform: translateY(100px); */
     opacity: 0;
   }
 }

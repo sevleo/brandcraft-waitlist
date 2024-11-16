@@ -1,23 +1,49 @@
-# Use a lightweight Node.js image
-FROM node:lts-alpine
+# syntax = docker/dockerfile:1
 
-# Set the working directory
-WORKDIR /usr/src/app
+# Adjust NODE_VERSION as desired
+ARG NODE_VERSION=23.1.0
+FROM node:${NODE_VERSION}-slim as base
 
-# Copy only package.json and package-lock.json (if exists)
-COPY package.json package-lock.json ./
+LABEL fly_launch_runtime="Vite"
 
-# Install dependencies
-RUN npm install --silent
+# Vite app lives here
+WORKDIR /app
 
-# Copy the rest of the frontend source code (but not node_modules)
+# Set production environment
+ENV NODE_ENV="production"
+
+
+# Throw-away build stage to reduce size of final image
+FROM base as build
+
+# Set build-time environment variables
+# ARG VITE_BACKEND_URL
+# ENV VITE_BACKEND_URL="https://brandcraft-waitlist-backend.fly.dev"
+
+# Install packages needed to build node modules
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
+
+# Install node modules
+COPY package-lock.json package.json ./
+RUN npm ci --include=dev
+
+# Copy application code
 COPY . .
 
-# Ensure TypeScript and Vue type declarations are installed
-# RUN npm install --save-dev typescript @vue/compiler-sfc @vitejs/plugin-vue vue-tsc
+# Build application
+RUN npm run build
 
-# Expose the frontend port (Vite's dev server)
-EXPOSE 5173
+# Remove development dependencies
+RUN npm prune --omit=dev
 
-# Run the app in development mode
-CMD ["npm", "run", "dev"]
+
+# Final stage for app image
+FROM nginx
+
+# Copy built application
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# Start the server by default, this can be overwritten at runtime
+EXPOSE 80
+CMD [ "/usr/sbin/nginx", "-g", "daemon off;" ]

@@ -2,7 +2,7 @@ services:
   backend:
     build: ./backend
     ports:
-      - "3001:3000"
+      - "3000:3000"
     volumes:
       - ./backend:/usr/src/app
       - /usr/src/app/node_modules
@@ -13,13 +13,15 @@ services:
       - frontend
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev # Use the development-specific Dockerfile
     ports:
-      - "5174:5173"
+      - "5173:5173"
     volumes:
-      - ./frontend:/usr/src/app
-      - /usr/src/app/node_modules
+      - ./frontend:/usr/src/app # Live code updates
+      - /usr/src/app/node_modules # Avoid overriding dependencies
     environment:
       - NODE_ENV=development
-      - VITE_BACKEND_URL=http://localhost:3001
+      - VITE_BACKEND_URL=http://localhost:3000
     command: npm run dev

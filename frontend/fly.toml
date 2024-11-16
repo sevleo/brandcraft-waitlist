@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for frontend-silent-darkness-7145 on 2024-09-13T00:06:25+07:00
+# fly.toml app configuration file generated for my-vue-app-twilight-river-4631 on 2024-11-16T10:34:47+07:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -7,14 +7,16 @@ app = 'brandcraft'
 primary_region = 'sin'
 
 [build]
+  args = { VITE_BACKEND_URL = "env:VITE_BACKEND_URL" }
 
 [http_service]
-  internal_port = 5173
+  internal_port = 80
   force_https = true
   auto_stop_machines = 'stop'
   auto_start_machines = true
-  min_machines_running = 2
+  min_machines_running = 0
   processes = ['app']
+
 
 [env]
   VITE_BACKEND_URL = "https://brandcraft-waitlist-backend.fly.dev"
