@@ -26,15 +26,6 @@ const showError = () => {
   });
 };
 
-const showSuccess = () => {
-  toast.add({
-    severity: "success",
-    summary: "Success!",
-    detail: "Thank you for signing up!",
-    life: 4000,
-  });
-};
-
 onMounted(async () => {
   try {
     const endpoint = `${import.meta.env.VITE_BACKEND_URL}/emails-count`;
@@ -56,7 +47,6 @@ const handleSubmit = async () => {
     email.value = "";
     error.value = "";
     success.value = true;
-    // showSuccess();
   } catch (err: any) {
     error.value = err.response.data.message;
     showError();
