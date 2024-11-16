@@ -90,7 +90,7 @@ const handleButtonClick = () => {
         single dashboard
       </h2>
 
-      <div v-if="!success" class="h-[160px]">
+      <div v-if="!success" class="h-[140px]">
         <div class="flex justify-center items-center gap-1">
           <img :src="giftIcon" alt="Gift Icon" class="w-4 h-4" />
           <p>Exclusive discount for Early Birds</p>
@@ -119,7 +119,7 @@ const handleButtonClick = () => {
           </button>
         </form>
       </div>
-      <div v-else-if="!loading" class="h-[160px] w-[350px] p-5 flex">
+      <div v-else-if="!loading" class="h-[140px] w-[350px] p-5 flex">
         <div
           class="bg-[#e2fbe8] py-[40px] rounded-xl flex flex-col w-full justify-center items-center border-[1px] border-[#047f5888]"
         >

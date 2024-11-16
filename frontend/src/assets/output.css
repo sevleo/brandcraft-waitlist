@@ -681,6 +681,10 @@ video {
   height: auto;
 }
 
+.h-\[140px\] {
+  height: 140px;
+}
+
 .w-4 {
   width: 1rem;
 }
